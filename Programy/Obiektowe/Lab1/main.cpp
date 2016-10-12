@@ -141,7 +141,7 @@ void zadanie5()
 }
 
 void zadanie4()
-{
+{     //Binarkę odpalać bezpośrednio z katalogu /bin/Debug (Wtedy pliku file.txt szuka w tym właśnie katalogu <<Wtedy zmienna current directory zawiera ścieżkę do katalogu Debug, a z tej kożysta binarka>>)
     int choice;
     ifstream fileInput("file.txt");
     string firstName, lastName, employmentDate;
