@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1476298721 source:/home/ginko/OneDrive/Polishit/Programy/Obiektowe/Lab1/main.cpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<fstream>
+	<sstream>
+	<locale>
+
