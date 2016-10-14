@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1476480358 source:/home/ginko/git/Programy/Numeryczne/Lab1/main.cpp
+	<iostream>
+	<math.h>
+	<iomanip>
+
