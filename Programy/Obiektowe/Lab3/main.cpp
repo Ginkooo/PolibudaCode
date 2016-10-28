@@ -1,49 +1,153 @@
 #include <iostream>
+#include <math.h>
+
+#define PI 3.14
+
 
 using namespace std;
 
-float newtonuj(int n, float x, float* xs, float* ys)
+class Kolo
 {
-    float tab2D[n][n];
-    for (int i = 0; i < n; i++)
+private:
+    float promien;
+    int kolor;
+public:
+    Kolo(float promien, int kolor)
     {
-        for (int j = 2; j<n; j++)
-            tab2D[i][j] = 0;
+        this->promien = promien;
+        this->kolor = kolor;
     }
 
-    float suma = ys[0];
+    Kolo(float promien) : Kolo(promien, 0) {}
+    Kolo() : Kolo(1, 0) {}
 
-    for (int i = 0; i < n; i++)
+    float ObliczPole()
     {
-        tab2D[i][0] = xs[i];
-        tab2D[i][1] = ys[i];
+        return PI * pow(promien, 2);
     }
 
-    for (int i = 0; i < n - (i+1); i++)
+    float OdliczObwod()
     {
-        for (int j = 2; j<n-1; j++)
-        {
-            tab2D[]
-        }
+        return 2*PI*promien;
     }
 
-
-    for (int i = 0; i < n; i++)
+    void UstawPromien(float promien)
     {
-        cout << endl;
-        for (int j = 0; j<n; j++)
-            cout << tab2D[i][j] << " ";
+        this->promien = promien;
     }
-}
 
+    void UstawKolor(int kolor)
+    {
+        this->kolor = kolor;
+    }
 
+    float GetPromien()
+    {
+        return this->promien;
+    }
 
-int main()
+    float GetKolor()
+    {
+        return this->kolor;
+    }
+
+};
+
+class Punkt
 {
-    float ys[] = { 1, 0, -1, 0 };
-    float xs[] = {-1, 0, 4, 5 };
-    float x = 4;
-    int n = 4;
+private:
+    float x, y;
+public:
+    Punkt(float x, float y)
+    {
+        this->x = x;
+        this->y = y;
+    }
 
-    int wynik = newtonuj(n, x, xs, ys);
+    float GetX()
+    {
+        return x;
+    }
+
+    float GetY()
+    {
+        return y;
+    }
+
+
+
+    void Wektor()
+    {
+        cout << "[" << x << ", " << y << "]";
+    }
+
+    float Odleglosc()
+    {
+        return sqrt(pow(x-0, 2)+pow(y-0, 2));
+    }
+
+
+    int Cwiartka()
+    {
+        return (x > 0) && (y > 0) ? 1 : 0;
+        return (x > 0) && (y < 0) ? 4 : 0;
+        return (x < 0) && (y > 0) ? 2 : 0;
+        return (x < 0) && (y < 0) ? 3 : 0;
+    }
+
+    bool OsX()
+    {
+        return y == 0 ? true : false;
+    }
+
+    bool OsY()
+    {
+        return x == 0 ? true : false;
+    }
+
+    static float OdlegloscMiedzyPunktami(Punkt punkt1, Punkt punkt2)
+    {
+        return sqrt(pow(punkt1.GetX() - punkt2.GetY(), 2)+pow(punkt1.GetY()-punkt2.GetY(), 2));
+    }
+
+
+
+};
+
+
+
+
+int main(int argc, char *argv[])
+{
+    Punkt p1(3, 4);
+    Punkt p2(4,4);
+    Punkt p3(0,0);
+    Punkt p4(1,0);
+
+    cout << Punkt::OdlegloscMiedzyPunktami(p1, p4) << endl;
+
+    cout << "\n\n\n\n\n";
+
+    /* Obiekty na stosie
+     *
+     * Kolo k1;
+        Kolo k2;
+        if (k1.ObliczPole() < k2.ObliczPole())
+            cout << "Pole k2 jest wieksze";
+        else
+            cout << "Pole k1 jest wieksze";
+        k1.UstawKolor(2);
+        k2.UstawKolor(2);
+    */
+
+    //Obiekty na stercie:
+    Kolo *k1 = new Kolo(3, 2);
+    Kolo *k2 = new Kolo(5, 4);
+
+    if (k1->ObliczPole() < k2->ObliczPole())
+        cout << "Pole k2 jest wieksze";
+    else
+        cout << "Pole k1 jest wieksze";
+    k1->UstawKolor(2);
+    k2->UstawKolor(2);
 }
