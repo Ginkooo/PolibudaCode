@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 
+//Aby pominąć ręczne wprowadzanie danych i wyświetlić dodatkowe informacje ustawić flagę DEBUG na 1
+
 #define DEBUG 0
 
 using namespace std;
