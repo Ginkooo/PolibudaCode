@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1477829381 source:/home/ginko/PolibudaCode/Programy/Numeryczne/Lab4/MNK/main.cpp
+	<iostream>
+	<iomanip>
+
