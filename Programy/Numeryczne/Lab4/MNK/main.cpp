@@ -3,11 +3,11 @@
 
 //Aby pominąć ręczne wprowadzanie danych i wyświetlić dodatkowe informacje ustawić flagę DEBUG na 1
 
-#define DEBUG 0
+#define DEBUG 1
 
 using namespace std;
 
-void mnk(int n, float xs[], float ys[])
+float mnk(int n, float xs[], float ys[], float x)
 {
 
     /*Tablica zawierająca n równań dla 0 i 1 rzędu, trzeci wymiar tablicy
@@ -100,11 +100,13 @@ void mnk(int n, float xs[], float ys[])
     float c = sum_a0_1;
     float d = sum_a1_1;
 
+    float a0;
+    float a1;
     float det = sum_a0_0 * sum_a1_1 - sum_a1_0 * sum_a0_1;
     if (det != 0)
     {
-        float a0 = (e * d - b * f) / det;
-        float a1 = (a * f - e * c) / det;
+        a0 = (e * d - b * f) / det;
+        a1 = (a * f - e * c) / det;
         cout << "a0 = " << a0 << endl;
         cout << "a2 = " << a1 << endl;
     }
@@ -112,6 +114,8 @@ void mnk(int n, float xs[], float ys[])
     {
         cout << "Wyznacznik nie istnieje. Brak rozwiazan, lub wiele rozwiazan" << endl;
     }
+
+    return a0 + a1*x;
 
 
 }
@@ -144,10 +148,14 @@ int main()
     int n = 5;
     float xs[] = {1, 2, 3, 4 ,5};
     float ys[] = {11, 12, 13, 14, 15};
+    int x = 5;
 #elif !DEBUG
     int n;
+    int x;
     cout << "Podaj ilosc punktow: ";
     cin >> n;
+    cout << "Podaj x, dla ktorego chcesz wyliczyc przyblizona wartosc: ";
+    cin >> x;
     float xs[n];
     float ys[n];
     for (int i = 0; i < n; i++)
@@ -160,8 +168,12 @@ int main()
 #endif // DEBUG
 
     cout << endl;
+
     if (poprawne(n, xs, ys))
-        mnk(n, xs, ys);
+    {
+        int wynik = mnk(n, xs, ys, x);
+        cout << "W punkcie " << x << "funkcja ma wartosc w przybliceniu " << wynik << endl;
+    }
     else
         cout << "Wprowadzone dane sa niepoprawne dla tej metody" << endl;
 }
