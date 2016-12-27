@@ -156,7 +156,7 @@ void gauss_eliminate(double** matrix, int size)
 int main()
 {
     cout << setprecision(3);
-    int size = 100;
+    int size = 10;
     double** matrix = create_matrix(size);
     populate_matrix(matrix, size);
     print_matrix(matrix, size);
