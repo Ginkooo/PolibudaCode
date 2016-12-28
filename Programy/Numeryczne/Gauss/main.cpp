@@ -58,9 +58,8 @@ void number_variables(double* row, int size)
     }
 }
 
-void populate_matrix(double** matrix, int size)
+void randomize_matrix(double** matrix, int size)
 {
-    number_variables(matrix[0], size);
     srand(time(NULL));
     for (int i = 1; i < size; i++)
     {
@@ -70,6 +69,33 @@ void populate_matrix(double** matrix, int size)
             if (rand() % 2 == 0)
                 matrix[i][j] *= -1;
         }
+    }
+}
+
+void fill_matrix_from_user(double** matrix, int size)
+{
+    double in;
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            printf("[%d][%d] = ", i, j);
+            cin >> in;
+            matrix[i + 1][j] = in;
+        }
+    }
+}
+
+void populate_matrix(double** matrix, int size, bool do_random)
+{
+    number_variables(matrix[0], size);
+    if (do_random)
+    {  
+    randomize_matrix(matrix, size);
+    }
+    else
+    {
+        fill_matrix_from_user(matrix, size);
     }
 }
 
@@ -151,7 +177,7 @@ void gauss_eliminate(double** matrix, int size)
     int i, j;
     for (i = 1, j = 0; i < size; i++, j++)
     {
-        //put_biggest(matrix, size, i, j);
+        put_biggest(matrix, size, i, j);
         zero_under(matrix, size, i, j);
     }
 }
@@ -216,7 +242,6 @@ result* solve_matrix(double** matrix, int size)
 {
     result* results = new result[size - 1];
     gauss_eliminate(matrix, size);
-    print_matrix(matrix, size);
     mul_elements(matrix, size);
     for (int i = 0; i < size - 1; i++)
     {
@@ -228,14 +253,22 @@ result* solve_matrix(double** matrix, int size)
 
 int main()
 {
-    cout << setprecision(3);
-    int size = 5;
+    cout << setprecision(5);
+    cout << "Podaj szerokosc maciezy: ";
+    int size;
+    cin >> size;
+    char in;
+    cout << "Czy wygenerowac losowa macierz? (t/n)";
+    cin >> in;
+    bool randomize;
+    if (in == 't' || in == 'T')
+        randomize = true;
+    else
+        randomize = false;
     double** matrix = create_matrix(size);
-    populate_matrix(matrix, size);
+    populate_matrix(matrix, size, randomize);
     print_matrix(matrix, size);
     result* results = solve_matrix(matrix, size);
-    cout << sum_nz_el(matrix[1], size);
-    print_matrix(matrix, size);
     for (int i = 0; i < size - 1; i++)
     {
         cout << "x" << results[i].id << " = " << results[i].value << endl;
