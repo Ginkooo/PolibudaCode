@@ -13,6 +13,13 @@ struct position
     int y;
 };
 
+struct result
+{
+    int id;
+    double value;
+};
+
+
 void print_matrix(double** matrix, int size)
 {
     for (int i = 0; i < size; i++)
@@ -70,7 +77,7 @@ void calculate_row(double* row_to_change, double* row_to_add, int size, double m
     for (int i = 0; i < size - 1; i++)
     {
         row_to_change[i] += (row_to_add[i] * multipler);
-        if (abs(row_to_change[i]) < pow(10,-4))
+        if (abs(row_to_change[i]) < pow(10,-10))
             row_to_change[i] = 0;
     }
 }
@@ -81,7 +88,6 @@ void zero_under(double** matrix, int size, int x, int y)
     {
         double multipler =  -1 * matrix[x + i][y] / matrix[x][y];
         calculate_row(matrix[x + i], matrix[x], size, multipler);
-        print_matrix(matrix, size);
     }
 }
 
@@ -151,7 +157,73 @@ void gauss_eliminate(double** matrix, int size)
     }
 }
 
+int get_first_nz_el_idx(double* row, int size)
+{
+    int i = size - 2;
+    while (!(row[i - 1] == 0 || i == 0))
+        i--;
+    return i;
+}
 
+double sum_nz_el(double* row, int size)
+{
+    int first = get_first_nz_el_idx(row, size) + 1;
+    int last = size - 1;
+    double sum;
+    if (first > size - 2)
+        return 0;
+    while (first < last)
+    {
+        sum += row[first];
+        first++;
+    }
+    return sum;
+}
+
+int get_col_last_nz_idx(double** matrix, int size, int idx)
+{
+    int j;
+    for (j = 1; j < size - 1; j++)
+    {
+        if (matrix[j + 1][idx] == 0)
+            return j;
+    }
+    return j;
+}
+
+void value_col_same(double** matrix, int size, int idx)
+{
+    int lz = get_col_last_nz_idx(matrix, size, idx);
+    for (int i = 1; i < lz; i++)
+    {
+        matrix[i][idx] = matrix[lz][idx];
+    }
+}
+
+void mul_elements(double** matrix, int size)
+{
+    int l = size - 1;
+    for (int i = size - 1; i > 0; i--)
+    {
+        double* row = matrix[i];
+        int first_nz = get_first_nz_el_idx(row, size);
+        row[first_nz] = ( row[l] - sum_nz_el(row, size) ) / row[first_nz];
+        value_col_same(matrix, size, first_nz);
+    }
+}
+
+result* solve_matrix(double** matrix, int size)
+{
+    result* results = new result[size - 1];
+    gauss_eliminate(matrix, size);
+    mul_elements(matrix, size);
+    for (int i = 0; i < size - 1; i++)
+    {
+        results[i].id = matrix[0][i];
+        results[i].value = matrix[1][i];
+    }
+    return results;
+}
 
 int main()
 {
@@ -159,6 +231,11 @@ int main()
     int size = 10;
     double** matrix = create_matrix(size);
     populate_matrix(matrix, size);
+    result* results = solve_matrix(matrix, size);
     print_matrix(matrix, size);
-    gauss_eliminate(matrix, size);
+    for (int i = 0; i < size - 1; i++)
+    {
+        cout << "x" << results[i].id << " = " << results[i].value << endl;
+    }
+    
 }
