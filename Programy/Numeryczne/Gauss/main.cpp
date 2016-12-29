@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <cstdio>
+#include <cstring>
 #include <ctime>
 #include <cmath>
 #include <exception>
@@ -20,6 +21,29 @@ struct result
     double value;
 };
 
+swap_results(result* result1, result* result2)
+{
+    result* temp = (result*)malloc(sizeof(result));
+    memcpy(temp, result1, sizeof(result));
+    memcpy(result1, result2, sizeof(result));
+    memcpy(result2, temp, sizeof(result));
+}
+
+void sort_results(result results[], int size)
+{
+    do
+    {
+        for (int i = 0; i < size - 1; i++)
+        {
+            if (results[i].id > results[i+1].id)
+            {
+                swap_results(&results[i], &results[i + 1]);
+            }
+        }
+        size--;
+    }
+    while (size > 1);
+}
 
 void print_matrix(double** matrix, int size)
 {
@@ -242,12 +266,15 @@ result* solve_matrix(double** matrix, int size)
 {
     result* results = new result[size - 1];
     gauss_eliminate(matrix, size);
+    cout << "Macierz po eliminacji i wyborach elementu podstawowego:" << endl;
+    print_matrix(matrix, size);
     mul_elements(matrix, size);
     for (int i = 0; i < size - 1; i++)
     {
         results[i].id = matrix[0][i];
         results[i].value = matrix[get_col_last_nz_idx(matrix, size, i)][i];
     }
+    sort_results(results, size - 1);
     return results;
 }
 
