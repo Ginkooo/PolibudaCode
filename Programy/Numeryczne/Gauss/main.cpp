@@ -27,6 +27,7 @@ swap_results(result* result1, result* result2)
     memcpy(temp, result1, sizeof(result));
     memcpy(result1, result2, sizeof(result));
     memcpy(result2, temp, sizeof(result));
+    free(temp);
 }
 
 void sort_results(result results[], int size)
@@ -89,7 +90,7 @@ void randomize_matrix(double** matrix, int size)
     {
         for (int j = 0; j < size; j++)
         {
-            matrix[i][j] = rand() % 20 + 1;
+            matrix[i][j] = rand() % 5;
             if (rand() % 2 == 0)
                 matrix[i][j] *= -1;
         }
@@ -115,7 +116,7 @@ void populate_matrix(double** matrix, int size, bool do_random)
     number_variables(matrix[0], size);
     if (do_random)
     {  
-    randomize_matrix(matrix, size);
+        randomize_matrix(matrix, size);
     }
     else
     {
@@ -137,8 +138,13 @@ void zero_under(double** matrix, int size, int x, int y)
 { 
     for (int i = 1; x + i < size; i++)
     {
-        double multipler =  -1 * matrix[x + i][y] / matrix[x][y];
-        calculate_row(matrix[x + i], matrix[x], size, multipler);
+        double multipler;
+        if (matrix[x+i][y] != 0)
+        {
+            multipler =  -1 * matrix[x + i][y] / matrix[x][y];
+
+            calculate_row(matrix[x + i], matrix[x], size, multipler);
+        }
     }
 }
 
@@ -175,7 +181,7 @@ position find_max(double** matrix, int size, position upper_corner)
     {
         for (int j = upper_corner.y; j < size - 1; j++)
         {
-            if (matrix[i][j] > max)
+            if (fabs(matrix[i][j]) > fabs(max))
             {
                 max = matrix[i][j];
                 tmp.x = i;
@@ -208,9 +214,13 @@ void gauss_eliminate(double** matrix, int size)
 
 int get_first_nz_el_idx(double* row, int size)
 {
-    int i = size - 2;
-    while (!(row[i - 1] == 0 || i == 0))
-        i--;
+    int i = 0;
+    while (i < size - 1)
+    {
+        if (row[i] != 0)
+            return i;
+        i++;
+    }
     return i;
 }
 
@@ -231,13 +241,13 @@ double sum_nz_el(double* row, int size)
 
 int get_col_last_nz_idx(double** matrix, int size, int idx)
 {
-    int j;
-    for (j = 1; j < size - 1; j++)
+    int j = size - 1;
+    while (j > 0)
     {
-        if (matrix[j + 1][idx] == 0)
+        if (matrix[j][idx] != 0)
             return j;
+        j--;
     }
-    return j;
 }
 
 void value_col(double** matrix, int size, int idx)
@@ -285,7 +295,7 @@ int main()
     int size;
     cin >> size;
     char in;
-    cout << "Czy wygenerowac losowa macierz? (t/n)";
+    cout << "Czy wygenerowac losowa macierz? (t/n):  ";
     cin >> in;
     bool randomize;
     if (in == 't' || in == 'T')
