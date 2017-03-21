@@ -1,0 +1,32 @@
+table {
+	background: #ffff00;
+	text-align: center;
+	width: 94%;
+	margin: 2%;
+	border: 1pt #7799aa solid;
+}
+
+caption{
+	font-size: 120%;
+	font-weight: bold;
+}
+
+thead, tfoot {
+	background: #00aaaa;
+	color: #ffffff;
+	font-size: 110%;
+	padding: 5pt;
+}
+
+td, th {
+	border: 1pt #54aaaa solid;
+}
+
+tfoot a {
+	color: #ffffff;
+}
+
+.parzysty {
+	background: #ffffff;
+}
+
