@@ -1,8 +1,9 @@
 
 import javax.swing.*;
 public class Main {
+        public static JFrame jFrame;
     public static void main(String[] args) {
-        JFrame jFrame = new JFrame();
+        jFrame = new JFrame();
         Gameplay gameplay = new Gameplay();
         jFrame.add(gameplay);
         jFrame.setResizable(false);

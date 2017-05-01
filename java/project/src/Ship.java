@@ -5,6 +5,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by ginko on 27.04.17.
@@ -56,6 +57,15 @@ public class Ship {
         move = false;
     }
 
+    public ArrayList<Integer> getMiddle() {
+        ArrayList<Integer> ret = new ArrayList<>();
+
+        ret.add(x + this.image.getHeight() / 2);
+        ret.add(y + this.image.getWidth() / 2);
+
+        return ret;
+    }
+
     public Image getImage() {
         if(move)
         {
@@ -86,7 +96,6 @@ public class Ship {
     }
 
     private void go_some() {
-        System.out.println(rotation);
         x += (double)Commons.SHIP_SPEED * Math.cos(Math.toRadians(rotation - 90));
         y += (double)Commons.SHIP_SPEED * Math.sin(Math.toRadians(rotation - 90));
     }

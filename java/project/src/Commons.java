@@ -6,7 +6,8 @@ public class Commons {
     public static final int WIDTH = 600;
     public static final int window_x = 10;
     public static final int window_y = 10;
-    public static final int SHIP_ROT_SPEED = 1;
-    public static final int SHIP_SPEED = 2;
-    public static final int ASTEROID_DELAY = 2000;
+    public static final int SHIP_ROT_SPEED = 8;
+    public static final int SHIP_SPEED = 6;
+    public static final int ASTEROID_DELAY = 100;
+    public static final int MAX_ASTEROID_SPEED = 4;
 }
