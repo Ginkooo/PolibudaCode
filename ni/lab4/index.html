@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width;initial-scale=1.0">
+		<title>Zaawansowany form</title>
+	</head>
+	<body>
+		<h1>Formularz wniosku</h1>
+		<form action="" method="post">
+			<label for="beneficient">Beneficient: </label><input list="beneficients" id="beneficient" required>
+			<datalist id="beneficients">
+				<option value="IEM">Intel Extreme Masters</option>
+				<option value="TAR">sdf sdf sdfs</option>
+				<option value="ZUS">sdaf sdfg</option>
+				<option value="MEN">Mdsfsdsdf SDF</option>
+			</datalist>
+			<label for="amount">Wielkość dotacji: </label>
+			<input type="number" min="20" step="5" required>
+			<label>Rodzaj karty płatniczej</label>
+			<input type="radio" name="card" id="visa", value="Visa">Visa</input>
+			<input type="radio" name="card" id="mastercard", value="MasterCard" required>MasterCard</input>
+			<label for="card_owner">Numer karty: </label>
+			<input type="text" pattern="\d{13}|\d{16}" required>
+			<label for="exp_date">Data ważności karty: </label>
+			<input type="text" id="exp_date" name="exp_date" required>
+			<label for="cvv">Kod CVV: </label>
+			<input type="text" id="cvv" name="cvv" pattern="\d{4}|\d{3}" required>
+			<input type="submit">
+		</form>
+	</body>
+</html>

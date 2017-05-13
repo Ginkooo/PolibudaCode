@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+}
+
+#footer {
+	background: #aFFFaF;
+	text-align: center;
+}
+
+label {
+	font-weight: bold;
+	display: inline-block;
+	margin-top: 2%;
+}
+
+#content {
+	background: #22FF3F;
+}
+
+form {
+	padding-left: 2%;
+}

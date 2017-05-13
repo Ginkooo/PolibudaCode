@@ -1,0 +1,41 @@
+#suggested {
+	margin: 0 auto;
+}
+
+li {
+	overflow: auto;
+}
+
+li * {
+	width: 100px;
+}
+
+#bookslider {
+	background: grey;
+}
+
+#suggested ul {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.suggestion {
+	margin: 0 auto;
+	display: inline-block;
+	cursor: pointer;
+	overflow: visible;
+	float: left;
+	margin: 10px 40px;
+}
+
+.title {
+	font-size: 90%;
+	display: none;
+	font-weight: bold;
+	width: 100px;
+}
+
+.book {
+	margin-bottom: 50px;
+    background: #f5f1f1;
+}

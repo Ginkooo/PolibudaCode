@@ -1,0 +1,30 @@
+table {
+	background: #FFFF7f;
+	text-align: center;
+	width: 94%;
+	margin: 2%;
+	border: 1pt solid purple;
+}
+
+caption {
+	font-size: 120%;
+	font-weight: bold;
+}
+
+thead, tfoot {
+	background: #9a50FF;
+	color: white;
+	font-size: 110%;
+	padding: 5pt;
+}
+
+td, th {
+	border: 1pt purple solid;
+}
+
+tfoot a {
+	color: white;
+}
+
+.even {
+	background: white;

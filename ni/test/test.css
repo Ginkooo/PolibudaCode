@@ -1,0 +1,49 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#banner {
+	clear: both;
+	text-align: center;
+	background: #aa0022;
+	padding: 1px;
+}
+
+#menu {
+	float: left;
+	width: 20%;
+	background: #FFFF00;
+}
+
+#bar {
+	float: left;
+	width: 20%;
+	background: #FFFF77;
+}
+
+#content {
+	float: right;
+	width: 77%;
+	background: white;
+}
+
+#content {
+	padding-top: 3%;
+	padding-left: 3%;
+}
+
+#footer {
+	clear: both;
+	width: 100%;
+	text-align: center;
+	background: #00aaFF;
+}
+
+.box {
+	margin-left: 10%;
+	margin-top: 2%;
+	width: 80%;
+	margin-right: 2%;
+	background: #4FFF50;
+}
