@@ -22,17 +22,40 @@
 
 	<link rel="stylesheet" href="styles.css" type="text/css">
 	</head>
-	<body onload="initShop()">
+	<body onload="initOrder()">
 		<div class="navbar navbar-default">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="sklep.html">Sklep</a></li>
-					<li><a href="koszyk.html">Koszyk (<span id="itemcount"></span>)</a></li>
+					<li><a href="sklep.html">Sklep</a></li>
+					<li class="active"><a href="koszyk.html">Koszyk (<span id="itemcount"></span>)</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="booklist">
+		<div class="jumbotron">
+			<h2>Dziękujemy za skorzystanie ze sklepu książek</h2>
+			<p>Wymagamy jeszcze podania kilku danych i potwierdzenia chęc zamówienia.</p>
+		</div>
+		<div class="container-fluid">
+			<h3>Twoje zamówienie:</h3>
+			<ul id="orderlist">
+			</ul>
+			<div class="row">
+				<div class="col-sm-6">
+					<form action="#" method="post">
+						<label for="name">Imię i nazwisko:</label>
+						<input type="text" name="name" id="name" class="form-control" />
+						<label for="phone">Numer telefonu</label>
+						<input type="text" name="phone" id="phone" class="form-control" pattern="\d+" title="Numer powinien składać się z samych cyfr" />
+						<label for="address">Adres:</label>
+						<input type="text" name="address" id="address" class="form-control" />
+						<label for="date">Data dostarczenia:</label>
+						<input type="date" name="date" id="date"/>
+						<br>
+						<input type="submit" value="Potwierdź" class="btn btn-lg btn-default" />
+					</form>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

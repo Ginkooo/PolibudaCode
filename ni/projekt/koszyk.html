@@ -22,17 +22,27 @@
 
 	<link rel="stylesheet" href="styles.css" type="text/css">
 	</head>
-	<body onload="initShop()">
+	<body onload="initCart()">
 		<div class="navbar navbar-default">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="index.html">Home</a></li>
-					<li class="active"><a href="sklep.html">Sklep</a></li>
-					<li><a href="koszyk.html">Koszyk (<span id="itemcount"></span>)</a></li>
+					<li><a href="sklep.html">Sklep</a></li>
+					<li class="active"><a href="koszyk.html">Koszyk (<span id="itemcount"></span>)</a></li>
 				</ul>
 			</div>
 		</div>
-		<div id="booklist">
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<h2>Witaj w koszyku</h2>
+				<p>Tutaj możesz przeglądać zawartość swojego koszyka, usuwać elementy. Gdy będziesz gotowy złożyć zamówienie, kliknij w przycisk</p>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<ul class="container-fluid" id="cartlist">
+			</ul>
+			<br>
+			<a href="zamow.html" class="btn btn-info btn-lg">Złóż zamówienie</a>
 		</div>
 	</body>
 </html>

@@ -65,6 +65,7 @@ function smallerize() {
 
 function biggerize() {
 	$(this).find('.title').slideDown();
+	$(this).children().css('position', 'relative');
 	$(this).children().css('margin', '5px auto');
 }
 
@@ -74,7 +75,7 @@ function put_books(books) {
 	html += '<ul>';
 	for(var i=0; i<books.length; i++) {
 		html += '<li class="suggestion" onclick="window.location.href=\'' + books[i].link + '\';">';
-		html += '<img src="' + books[i].src + '" alt="' + books[i].title + '">';
+		html += '<img height="300" src="' + books[i].src + '" alt="' + books[i].title + '">';
 		html += '<h3 class="title">' + books[i].title + '</h3>';
 		html += '</li>';
 	}
@@ -83,10 +84,18 @@ function put_books(books) {
 	$('.suggestion').mouseenter(biggerize).mouseleave(smallerize);
 }
 
+function count_cart() {
+	var cart = localStorage['cart'] || '[]';
+	var cart = JSON.parse(cart);
+	var count = cart.length;
+	$('#itemcount').html(count);
+}
+
 function initIndex() {
 	var suggestion = $('#suggested');
 	var books_to_preview = random_books(5);
 	put_books(books_to_preview);
+	count_cart();
 }
 
 function list_books() {
@@ -95,9 +104,13 @@ function list_books() {
 	ret += '<div class="row">';
 	while(i<books.length) {
 		ret += '<div class="book col-md-6">';
-		ret += '<img src="' + books[i].src + '" alt="' + books[i].title + '">';
 		ret += '<h3 class="bigtitle">' + books[i].title + '</h3>';
+		ret += '<div class="bookexpand">';
+		ret += '<img src="' + books[i].src + '" alt="' + books[i].title + '">';
 		ret += '<p class="description">' + books[i].description + '</p>';
+		ret += '<div class="btn btn-primary btn-md" onclick="window.location.href=\'' + books[i].link + '\'">Kup u wydawcy</div>';
+		ret += '<div class="btn btn-primary btn-md" onclick="add_to_cart(\'' + books[i].title + '\')">Dodaj do koszyka</div>';
+		ret += '</div>';
 		ret += '</div>';
 		i++;
 	}
@@ -108,4 +121,98 @@ function list_books() {
 
 function initShop() {
 	$('#booklist').append(list_books);
+	$('.bigtitle').click((event) => {
+		var event = $(event.target);
+		var target = event.next('.bookexpand');
+		target.slideToggle("slow");
+	});
+	count_cart();
+}
+
+function increase_item_count() {
+	$('#itemcount').html(Number($('#itemcount').html()) + 1);
+}
+
+function add_to_cart(name) {
+	var cart = localStorage['cart'] || '[]';
+	var cart = JSON.parse(cart);
+	cart.push(name);
+	localStorage['cart'] = JSON.stringify(cart);
+	increase_item_count();
+}
+
+function find_src(name) {
+	var index = books.findIndex((book) => book.title == name);
+	return books[index].src;
+}
+
+function populate_cartlist() {
+	var cartlist = $('#cartlist');
+	var cart = localStorage['cart'] || '[]';
+	var cart = JSON.parse(cart);
+	var html = '';
+	for(var i=0; i<cart.length; i++) {
+		html += '<div class="media cartitem">';
+		html += '<div class="media-left">';
+		html += '<div class="itemdelete glyphicon glyphicon-remove" onclick="delete_item(this,\'' + cart[i] + '\')"></div>';
+		html += '</div>';
+		html += '<div class="media-body">';
+		html += '<h4>' + cart[i] + '</span>';
+		html += '<img class="thumbnail" src="' + find_src(cart[i]) + '" alt="Obraz" width="50" height="50">';
+		html += '</div>';
+		html += '</div>';
+	}
+	cartlist.append(html);
+}
+
+function zerotraile(num) {
+	if(num > 9) {
+		return String(num);
+	}
+	var num = String(num);
+	return '0' + num;
+}
+
+function set_min_date() {
+	var datefield = $('#date');
+	var date = new Date();
+	date.setDate(date.getDate() + 3);
+	var day = zerotraile(date.getDate());
+	var month = zerotraile(date.getMonth() + 1);
+	var year = date.getFullYear();
+	datefield.attr('min', [year, month, day].join('-'));
+}
+
+function initCart() {
+	count_cart();
+	populate_cartlist();
+}
+
+function delete_cart() {
+	localStorage['cart'] = '[]';
+}
+
+function delete_item(element, name) {
+	var cart = JSON.parse(localStorage['cart'] || '[]')
+	var index = cart.indexOf(name);
+	if(index > -1) {
+		cart.splice(index, 1);
+	}
+	localStorage['cart'] = JSON.stringify(cart);
+	count_cart();
+	$(element).parent().parent().remove();
+}
+
+function initOrder() {
+	count_cart();
+	set_min_date();
+	var orderlist = $('#orderlist');
+	var cart = JSON.parse(localStorage['cart'] || '[]')
+	html = '';
+	for(var i=0; i<cart.length; i++) {
+		html += '<li>';
+		html += cart[i];
+		html += '</li>';
+	}
+	orderlist.append(html);
 }

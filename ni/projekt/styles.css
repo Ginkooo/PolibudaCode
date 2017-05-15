@@ -2,14 +2,6 @@
 	margin: 0 auto;
 }
 
-li {
-	overflow: auto;
-}
-
-li * {
-	width: 100px;
-}
-
 #bookslider {
 	background: grey;
 }
@@ -26,6 +18,8 @@ li * {
 	overflow: visible;
 	float: left;
 	margin: 10px 40px;
+	padding-bottom: 100px;
+	height: 400px;
 }
 
 .title {
@@ -38,4 +32,36 @@ li * {
 .book {
 	margin-bottom: 50px;
     background: #f5f1f1;
+}
+
+.bigtitle {
+	cursor: pointer;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.bookexpand {
+	display: none;
+}
+
+#cartlist {
+	background: #c7c7c7;
+}
+
+#cartlist li {
+	list-style: none;
+	display: block;
+	width: 100%;
+	margin-bottom: 50px;
+	margin-top: 10px;
+	background: #f1f1f1;
+	padding: 10px;
+}
+
+#cartlist li span {
+	font-size: 110%;
+}
+
+.itemdelete {
+	cursor: pointer;
 }
