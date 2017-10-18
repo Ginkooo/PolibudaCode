@@ -1,0 +1,14 @@
+.center {
+    max-width: 50%;
+    margin: auto;
+    border: 1px solid black;
+    background: lightblue;
+}
+
+form input {
+    margin-top: 10px;
+}
+
+form select {
+    margin-top: 10px;
+}
