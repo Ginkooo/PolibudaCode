@@ -1,0 +1,19 @@
+1. System powinien umożliwiać generowanie kodow kreskowych i ich drukowanie na samoprzylepnych naklejkach.
+2. Przy generowaniu kodu kreskowego powinno sie dac uzupelniac takie informacje jak:
+    - Nazwa produktu
+    - Jednostka sprzedazy (szt./kg. etc.)
+    - Cena
+3. Informacje o wpisanym stanie produktu powinny byc zapisywane do bazy danych
+4. Informacje o produkcie powinny byc modyfikowalne po wyszukaniu produktu w bazie danych po nazwie, lub kodzie pod kodem kreskowym, lub przez zeskanowanie samego kodu kreskowego
+5. Dostep do mozliwosci edycji i dodawania produktow powinny miec okreslone komputery, wyposazone w czytniki kodow kreskowych.
+6. Baza danych sklepu powinna zawierac informacje o wszystkich pracownikach sklepu, ktore powinny byc modyfikowalne po zalogowaniu sie do systemu za pomoca hasla i loginu.
+7. Powyzsze funkcjonalnosci powinny byc wykonywane jedynie w zamknietym intranecie, do ktorego dostep powinny miec tylko maszyny recznie dodane przez administratora.
+8. Informacje o pracowniku powinny zawierac jego dane osobowe, telefon kontaktowy.
+9. Kazdy pracownik powinien uzyskac identyfikator z kodem kreskowym, ktory przy wejsciu na sluzbe i zejsciu z niej skanuje w odpowiednio do tego wyznaczonym czytniku. Informacje o godzinach wejscia/wyjscia z pracy powinny byc zapisywane z bazie danych.
+10. Wszystkie informacje znajdujace sie w bazie danych powinny byc modyfikowalne przez system zarzadzania bazami danych. Najlepiej na wolnej licencji.
+11. Kasjerzy powinni miec mozliwosc skanowania i ew. wazenia towarow przy kasie, a system powinien pokazywac im na wyswietlaczyu sumaryczna cene zakupionych przez klienta produktow.
+12. System po dokonanej transakcji powinien drukowac paragon w standardowym formacie.
+13. System powinien monitorowac statystyki kupowania poszczegolnych produktow, ich kupowanie miesieczne, roczne, dzienne i godzinowe.
+14. System powinien wykorzystywac techniki uczenia maszynowego, aby miec mozliwosc przewidywania przyszlych statystyk kupowania tychze produktow.
+15. System powinien monitorowac stan magazynowy produktow i sugerowac ktore produkty nalezy dokupic, a ktore zostawic w malych ilosciach. Powinno sie brac pod uwage poprzednie ustalenia dotyczace statystyk.
+16. Opcjonalna opcja powinno byc automatycznie zamawianie produktow przez system u wczesniej ustalonych dostawcow.
