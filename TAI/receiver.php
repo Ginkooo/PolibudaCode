@@ -4,28 +4,57 @@
 </head>
 <body>
     <?php
-        var_dump($_REQUEST);
-        echo "<h2>Dane odebrane z formularza:</h2>";
-        if (isset($_REQUEST['surname']) && $_REQUEST['surname']) {
-            $surname= htmlspecialchars(trim($_REQUEST['surname']));
-            echo "Nazwisko: $surname<br>";
+
+    $filename = 'db.csv';
+
+    function write_header($f) {
+        fwrite($f, "surname|age|country|email|languages|payment_type\n");
+    }
+
+    function show($filename) {
+        if (!file_exists($filename)) {
+            die("Plik nie istnieje, stwóżże do najpierw poprzed dodanie jakiś danych przez funkcję dodaj!");
         }
-        if (isset($_REQUEST['age']) && $_REQUEST['age']) {
-            $age= htmlspecialchars(trim($_REQUEST['surname']));
-            echo "Wiek: $age<br>";
+
+        $f = fopen($filename, 'r');
+
+        while($line = fgetcsv($f, $delimiter='|')) {
+            print(implode("\t", $line));
+            print("\n");
         }
-        if (isset($_REQUEST['country']) && $_REQUEST['country']) {
-            $country = htmlspecialchars(trim($_REQUEST['country']));
-            echo "Kraj: $country<br>";
+
+        fclose($f);
+    }
+    
+    function add_record($filename) {
+    foreach($_REQUEST as $key=>$value) {
+        $$key = $value;
+    }
+        if (!file_exists($filename)) {
+            $f = fopen($filename, 'w');
+            write_header($f);
+            fclose($f);
         }
-        if (isset($_REQUEST['email']) && $_REQUEST['email']) {
-            $email= htmlspecialchars(trim($_REQUEST['email']));
-            echo "Email: $email<br>";
-        }
-        if (isset($_REQUEST['language']) && $_REQUEST['language']) {
-            $surname= htmlspecialchars(trim($_REQUEST['surname']));
-            echo "Język: $surname<br>";
-        }
+        $lang = implode(',', $lang);
+        $f = fopen($filename, 'a');
+        fwrite($f, "$surname|$age|$country|$email|$lang|$payment_type\n");
+        fclose($f);
+    }
+
+    foreach($_REQUEST as $key=>$value) {
+        $$key = $value;
+    }
+
+
+    switch($_REQUEST['action']) {
+        case 'add':
+            echo "Zapisywanie informacji do pliku";
+            add_record($filename);
+        break;
+        case 'show':
+            show($filename);
+        break;
+    }
         ?>
 <body>
 </html>
