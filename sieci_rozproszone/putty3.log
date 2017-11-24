@@ -1,0 +1,423 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2017.11.24 13:08:14 =~=~=~=~=~=~=~=~=~=~=~=
+
+% Please answer 'yes' or 'no'.
+Would you like to enter the initial configuration dialog? [yes/no]: 
+% Please answer 'yes' or 'no'.
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+Jan  2 12:00:04.143: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL: Module name = c2900 Next reboot level = ipbasek9 and License = ipbasek9
+Nov 24 12:31:39.619: %IFMGR-7-NO_IFINDEX_FILE: Unable to open nvram:/ifIndex-table No such file or directory
+Nov 24 12:31:54.255: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to down
+Nov 24 12:31:54.255: %LINK-3-UPDOWN: Interface GigabitEthernet0/1, changed state to down
+Nov 24 12:31:54.255: %LINK-3-UPDOWN: Interface GigabitEthernet0/2, changed state to down
+Nov 24 12:31:54.255: %LINK-3-UPDOWN: Interface Serial0/0/0, changed state to down
+Nov 24 12:31:54.255: %LINK-3-UPDOWN: Interface Serial0/0/1, changed state to down
+Nov 24 12:31:55.443: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to down
+Nov 24 12:31:55.443: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to down
+Nov 24 12:31:55.443: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to down
+Nov 24 12:31:55.443: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to down
+Nov 24 12:31:55.443: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/1, changed state to down
+Nov 24 12:31:56.243: %SYS-6-STARTUP_CONFIG_IGNORED: System startup configuration is ignored based on the configuration register setting.
+Nov 24 13:03:48.543: %LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to administratively down
+Nov 24 13:03:50.411: %LINK-5-CHANGED: Interface Embedded-Service-Engine0/0, changed state to administratively down
+Nov 24 13:03:50.411: %LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to administratively down
+Nov 24 13:03:50.411: %LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to administratively down
+Nov 24 13:03:50.411: %LINK-5-CHANGED: Interface Serial0/0/0, changed state to administratively down
+Nov 24 13:03:50.411: %LINK-5-CHANGED: Interface Serial0/0/1, changed state to administratively down
+Nov 24 13:03:51.419: %LINEPROTO-5-UPDOWN: Line protocol on Interface Embedded-Service-Engine0/0, changed state to down
+Nov 24 13:03:52.119: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.1(4)M4, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2012 by Cisco Systems, Inc.
+Compiled Tue 20-Mar-12 18:57 by prod_rel_team
+Nov 24 13:03:52.295: %SNMP-5-COLDSTART: SNMP agent on host Router is undergoing a cold start
+Router>enable
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostnam  e R2 4 3
+R3(config)#line conf s
+R3(config)#line console 0
+R3(config-line)#loggin
+R3(config-line)#logging sy
+R3(config-line)#logging synchronous 
+R3(config-line)#exec-time
+R3(config-line)#exec-timeout 0 0
+R3(config-line)#exit
+R3(config)#interface Gi
+R3(config)#interface GigabitEthernet 0/0  
+R3(config-if)#ip address192.168.2.1 192.168.2.1192.168.2.1 255.255.255.0
+R3(config-if)#exit
+R3(config)#interface Se
+R3(config)#interface Serial 0/0/1
+R3(config-if)#ip address 192,1  .168.1.1 255.255.255.0
+R3(config-if)#exit
+R3(config)#inter
+R3(config)#interface Gi
+R3(config)#interface GigabitEthernet 0                   S
+R3(config)#interface Serial 0/0
+R3(config)#interface Serial 0/0/
+R3(config)#interface Serial 0/0/1
+R3(config-if)#no hsut    shutdown
+R3(config-if)#\
+Nov 24 13:24:35.219: %LINK-3-UPDOWN: Interface Serial0/0/1, changed state to up
+Nov 24 13:24:36.219: %LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/1, changed state to up
+R3(config-if)#\i  exit
+R3(config)#in
+R3(config)#interface Gi
+R3(config)#interface GigabitEthernet 0/0
+R3(config-if)#no shutdown
+R3(config-if)#
+Nov 24 13:25:32.699: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to down
+R3(config-if)#
+Nov 24 13:25:36.255: %LINK-3-UPDOWN: Interface GigabitEthernet0/0, changed state to up
+Nov 24 13:25:37.255: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+R3(config-if)#=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2017.11.24 13:57:32 =~=~=~=~=~=~=~=~=~=~=~=
+
+R3(config-if)#
+R3(config-if)#exit
+R3(config)#exit
+R3#con
+Nov 24 13:53:13.679: %SYS-5-CONFIG_I: Configured from console by console
+R3#con   show inters faces
+Embedded-Service-Engine0/0 is administratively down, line protocol is down 
+  Hardware is Embedded Service Engine, address is 0000.0000.0000 (bia 0000.0000.0000)
+  MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/64/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 input packets with dribble condition detected
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+ --More--              0 lost carrier, 0 no carrier
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/0 is up, line protocol is up 
+  Hardware is CN Gigabit Ethernet, address is 6c20.560f.b680 (bia 6c20.560f.b680)
+  Internet address is 192.168.2.1/24
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full Duplex, 100Mbps, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:00, output 00:00:05, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     235 packets input, 30335 bytes, 0 no buffer
+     Received 233 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+ --More--         
+R3#show interfaces               in  configut rt   e terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#interface S
+R3(config)#interface Serial 0/0/1
+R3(config-if)#clock
+R3(config-if)#clock rata
+R3(config-if)#clock rata e
+R3(config-if)#clock rate 64000
+R3(config-if)#show running-config
+                ^
+% Invalid input detected at '^' marker.
+
+R3(config-if)#end
+R3#
+Nov 24 14:17:22.891: %SYS-5-CONFIG_I: Configured from console by console
+R3#show runnign  ng-config
+Building configuration...
+
+Current configuration : 1318 bytes
+!
+! Last configuration change at 14:17:22 UTC Fri Nov 24 2017
+version 15.1
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+no ipv6 cef
+ip source-route
+ip cef
+!
+!
+!
+ --More--         !
+!
+multilink bundle-name authenticated
+!
+!
+crypto pki token default removal timeout 0
+!
+!
+license udi pid CISCO2911/K9 sn FGL163811VZ
+!
+!
+!
+!
+!
+!
+!
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ ip address 192.168.2.1 255.255.255.0
+ duplex auto
+ --More--          speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/0/1
+ ip address 192.168.1.1 255.255.255.0
+ clock rate 64000
+!
+ip forward-protocol nd
+ --More--         !
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport input all
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ --More--          login
+ transport input all
+!
+scheduler allocate 20000 1000
+end
+
+R3#    configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R3(config)#interface Se
+R3(config)#interface Serial 0/0/1
+R3(config-if)#no shutdown
+R3(config-if)#end
+R3#
+Nov 24 14:18:13.227: %SYS-5-CONFIG_I: Configured from console by console
+R3#h show interfaces
+Embedded-Service-Engine0/0 is administratively down, line protocol is down 
+  Hardware is Embedded Service Engine, address is 0000.0000.0000 (bia 0000.0000.0000)
+  MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/64/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 input packets with dribble condition detected
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+ --More--              0 lost carrier, 0 no carrier
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/0 is up, line protocol is up 
+  Hardware is CN Gigabit Ethernet, address is 6c20.560f.b680 (bia 6c20.560f.b680)
+  Internet address is 192.168.2.1/24
+  MTU 1500 bytes, BW 100000 Kbit/sec, DLY 100 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Full Duplex, 100Mbps, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input 00:00:02, output 00:00:03, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     905 packets input, 96655 bytes, 0 no buffer
+     Received 817 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+ --More--              0 watchdog, 171 multicast, 0 pause input
+     488 packets output, 48561 bytes, 0 underruns
+     0 output errors, 0 collisions, 1 interface resets
+     108 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     1 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/1 is administratively down, line protocol is down 
+  Hardware is CN Gigabit Ethernet, address is 6c20.560f.b681 (bia 6c20.560f.b681)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+ --More--              0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+GigabitEthernet0/2 is administratively down, line protocol is down 
+  Hardware is CN Gigabit Ethernet, address is 6c20.560f.b682 (bia 6c20.560f.b682)
+  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation ARPA, loopback not set
+  Keepalive set (10 sec)
+  Auto Duplex, Auto Speed, media type is RJ45
+  output flow-control is unsupported, input flow-control is unsupported
+  ARP type: ARPA, ARP Timeout 04:00:00
+  Last input never, output never, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+ --More--           Queueing strategy: fifo
+  Output queue: 0/40 (size/max)
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     0 packets input, 0 bytes, 0 no buffer
+     Received 0 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored
+     0 watchdog, 0 multicast, 0 pause input
+     0 packets output, 0 bytes, 0 underruns
+     0 output errors, 0 collisions, 0 interface resets
+     0 unknown protocol drops
+     0 babbles, 0 late collision, 0 deferred
+     0 lost carrier, 0 no carrier, 0 pause output
+     0 output buffer failures, 0 output buffers swapped out
+Serial0/0/0 is administratively down, line protocol is down 
+  Hardware is WIC MBRD Serial
+  MTU 1500 bytes, BW 1544 Kbit/sec, DLY 20000 usec, 
+     reliability 253/255, txload 1/255, rxload 1/255
+  Encapsulation HDLC, loopback not set
+  Keepalive set (10 sec)
+  Last input 01:16:51, output 01:16:54, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+ --More--           Queueing strategy: weighted fair
+  Output queue: 0/1000/64/0 (size/max total/threshold/drops) 
+     Conversations  0/1/256 (active/max active/max total)
+     Reserved Conversations 0/0 (allocated/max allocated)
+     Available Bandwidth 1158 kilobits/sec
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     89 packets input, 2136 bytes, 0 no buffer
+     Received 89 broadcasts (0 IP multicasts)
+     1 runts, 0 giants, 0 throttles
+     2 input errors, 1 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+     89 packets output, 2136 bytes, 0 underruns
+     0 output errors, 0 collisions, 2 interface resets
+     0 unknown protocol drops
+     0 output buffer failures, 0 output buffers swapped out
+     2 carrier transitions
+     DCD=down  DSR=down  DTR=down  RTS=down  CTS=down
+
+Serial0/0/1 is up, line protocol is up 
+  Hardware is WIC MBRD Serial
+  Internet address is 192.168.1.1/24
+  MTU 1500 bytes, BW 1544 Kbit/sec, DLY 20000 usec, 
+     reliability 255/255, txload 1/255, rxload 1/255
+  Encapsulation HDLC, loopback not set
+ --More--           Keepalive set (10 sec)
+  Last input 00:00:04, output 00:00:04, output hang never
+  Last clearing of "show interface" counters never
+  Input queue: 0/75/0/0 (size/max/drops/flushes); Total output drops: 0
+  Queueing strategy: weighted fair
+  Output queue: 0/1000/64/0 (size/max total/threshold/drops) 
+     Conversations  0/1/256 (active/max active/max total)
+     Reserved Conversations 0/0 (allocated/max allocated)
+     Available Bandwidth 1158 kilobits/sec
+  5 minute input rate 0 bits/sec, 0 packets/sec
+  5 minute output rate 0 bits/sec, 0 packets/sec
+     393 packets input, 29148 bytes, 0 no buffer
+     Received 393 broadcasts (0 IP multicasts)
+     0 runts, 0 giants, 0 throttles
+     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored, 0 abort
+     395 packets output, 29476 bytes, 0 underruns
+     0 output errors, 0 collisions, 4 interface resets
+     0 unknown protocol drops
+     0 output buffer failures, 0 output buffers swapped out
+     0 carrier transitions
+     DCD=up  DSR=up  DTR=up  RTS=up  CTS=up
+
+R3#   
