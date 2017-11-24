@@ -1,0 +1,4 @@
+select lastname, firstname, index_nr from students order by lastname desc
+select * from employees order by birth_date
+select book from borrows where student in(3, 4)
+select students.lastname from borrows join students on student=students.id WHERE borrowing_date between '2017-10-01' and '2017-11-25'
