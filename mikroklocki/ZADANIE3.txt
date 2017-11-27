@@ -1,0 +1,43 @@
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+volatile char i = 0;
+volatile char up = 1;
+
+volatile char counter = 0;
+
+void toggle_up() {
+
+	if (up) {	
+		up = 0;
+	}
+	else {
+		up = 1;
+	}
+}
+
+ISR(TIMER0_OVF_vect) {
+	++counter;
+	if (counter > 9) {
+		counter = 0;
+		if (up)
+			OCR0 +=2;
+		else
+			OCR0 -=2;
+	}
+	if (OCR0 == 254)
+		toggle_up();
+	if (OCR0 == 2)
+		toggle_up();
+}
+
+int main() {
+	DDRB |= (1<<DDB3);
+	DDRA = 255;
+	TIMSK |= (1<<TOIE0);
+	TCCR0 = (1<<WGM01) | (1<<WGM00) | (1<<COM01) | (1<<COM00) | (1<<CS01);
+	sei();
+	DDRA = 255;
+	while (1) {}
+}

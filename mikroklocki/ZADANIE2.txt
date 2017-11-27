@@ -1,0 +1,30 @@
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+volatile char i = 0;
+volatile char curr_delay;
+
+void reset_timer(char n) {
+	TCNT0 = n;
+}
+
+ISR(TIMER0_OVF_vect) {
+	PORTA = curr_delay;
+}
+
+int main() {
+	char n = 192;
+	TIMSK |= (1<<TOIE0);
+	TCCR0 = (1<<CS01) | (1<<CS00);
+	sei();
+	DDRA = 255;
+	while (1) {
+		reset_timer(n);
+		curr_delay = 1;
+		_delay_ms(3);
+		curr_delay = 128;
+		reset_timer(n);
+		_delay_ms(5);
+	}
+}
