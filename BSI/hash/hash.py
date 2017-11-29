@@ -17,10 +17,15 @@ for fname, size in files:
     times = []
     cmd = 'openssl dgst -{} {}'.format(t, fname)
     avg = timeit(stmt='subprocess.check_output("{cmd}", shell=True)'.format(cmd=cmd), number=10, timer=process_time, setup='import subprocess');
-    print(avg)
     mbsz = size / 1000000
     print('Rozmiar pliku w mb: ', end='')
     print(mbsz)
     print('Funkcja: ' + t)
     avg_mb = avg / mbsz
-    print('Czas obliczania na megabajt: ' + str(avg_mb) + ' ms')
+    print('Czas obliczania na megabajt: ' + str(avg_mb) + ' s')
+    print()
+    print()
+  print()
+  print()
+  print()
+  print()
