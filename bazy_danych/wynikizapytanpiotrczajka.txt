@@ -2,3 +2,9 @@ select lastname, firstname, index_nr from students order by lastname desc
 select * from employees order by birth_date
 select book from borrows where student in(3, 4)
 select students.lastname from borrows join students on student=students.id WHERE borrowing_date between '2017-10-01' and '2017-11-25'
+select books.id, books.title from books where books.id not in (select borrows.book from borrows)
+select students.id, students.lastname, students.firstname, count(borrows.student) from students join borrows on students.id = borrows.student group by borrows.student
+select students.id, students.lastname, students.firstname, count(borrows.student) as cnt from students join borrows on students.id = borrows.student group by borrows.student having count(borrows.student)>2
+select min(borrows.borrowing_date), max(borrows.borrowing_date) from borrows
+insert into students (index_nr, lastname, firstname, birth_date, pesel, city, street, apartment, phone_nr) values (83730, 'Piotr', 'Czajka', '09-12-1995', 95120908170, 'Lublin', 'Króla Rogera 3', 64, 786818448)
+alter table employees add COLUMN postal_code varchar(30) DEFAULT '34-523'
