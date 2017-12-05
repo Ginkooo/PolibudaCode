@@ -199,18 +199,13 @@ char LCD_DefineSymbols() {
 ISR(INT0_vect) {
 	code = get_key_code();
 	sei();
-	curr_num = code;
-	PORTC = curr_num;
+	curr_num = code;;
 	PORTA = 0b00001111;
 }
 
 int main(void) {
-
-
-	DDRC = 0xFF;
 	DDRA= 0xF0;
 	PORTA = 0b00001111;
-
 
 	MCUCR |= 1<<ISC01;
 	MCUCR &= ~(1<<ISC00);
