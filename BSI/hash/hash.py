@@ -1,7 +1,7 @@
 import sys
-from time import process_time
 from timeit import timeit
 import csv
+import time
 
 types = ['md5', 'sha1', 'sha256', 'md4']
 
@@ -16,7 +16,8 @@ for fname, size in files:
   for t in types:
     times = []
     cmd = 'openssl dgst -{} {}'.format(t, fname)
-    avg = timeit(stmt='subprocess.check_output("{cmd}", shell=True)'.format(cmd=cmd), number=10, timer=process_time, setup='import subprocess');
+    #funkcja zwraca średni czas wykonania polecenia, wykonuje je 10 razy dla dokładniejszego wyniku
+    avg = timeit(stmt='subprocess.check_output("{cmd}", shell=True)'.format(cmd=cmd), timer=time.time, number=10, setup='import subprocess');
     mbsz = size / 1000000
     print('Rozmiar pliku w mb: ', end='')
     print(mbsz)
