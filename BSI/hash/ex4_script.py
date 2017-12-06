@@ -39,7 +39,7 @@ def get_avg_collision_time_for_random_bytes_sequence():
     counts = []
     for i in range(10):
         count = 0
-        original = os.random(5)
+        original = os.urandom(5)
         original_hash = small_hash(original)
         while True:
             count += 1
