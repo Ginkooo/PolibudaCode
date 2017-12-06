@@ -1,15 +1,15 @@
 import sys
 import os
-from hashlib import sha256
+from hashlib import md5
 from itertools import permutations
 import string
 import random
 
-SZ = 4
+SZ = 3
 
 
 def small_hash(bytes_):
-    return sha256(bytes_).digest()[:SZ]
+    return md5(bytes_).digest()[:SZ]
 
 
 or_string = b'siema'
@@ -19,7 +19,7 @@ or_hash = small_hash(or_string)
 counts = []
 
 
-def get_avg_reverse_time():
+def get_avg_reverse_tries():
     for i in range(10):
         count = 0
         or_string = ''.join([random.choice(string.ascii_lowercase) for _ in range(length)]).encode('ascii')
@@ -52,6 +52,6 @@ def get_avg_collision_time_for_random_bytes_sequence():
     return avg
 
 
-rnd_string_avg = get_avg_reverse_time()
-print('Random {} ascii lowercase letter avg reverse time: '.format(length), rnd_string_avg)
-print('Random bytes avg collision time: ', get_avg_collision_time_for_random_bytes_sequence())
+rnd_string_avg = get_avg_reverse_tries()
+print('Random {} ascii lowercase letters avg reverse tries count: '.format(length), rnd_string_avg)
+print('Random bytes avg collision tries count: ', get_avg_collision_time_for_random_bytes_sequence())
