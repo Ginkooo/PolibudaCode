@@ -1,4 +1,3 @@
-import sys
 import os
 from hashlib import md5
 from itertools import permutations
@@ -29,8 +28,9 @@ def get_avg_reverse_tries():
             count += 1
             perm = ''.join(perm).encode('ascii')
             if small_hash(perm) == or_hash:
-                counts.append(count)
-                break
+                if or_string == perm:
+                    counts.append(count)
+                    break
     avg = sum(counts)/len(counts)
     return avg
 
