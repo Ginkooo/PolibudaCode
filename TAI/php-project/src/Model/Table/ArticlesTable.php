@@ -30,51 +30,6 @@ class ArticlesTable extends Table
      */
     public function initialize(array $config)
     {
-        parent::initialize($config);
-
-        $this->setTable('articles');
-        $this->setDisplayField('title');
-        $this->setPrimaryKey('id');
-
         $this->addBehavior('Timestamp');
-    }
-
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create')
-            ->add('id', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        $validator
-            ->scalar('title')
-            ->maxLength('title', 30)
-            ->allowEmpty('title');
-
-        $validator
-            ->scalar('body')
-            ->allowEmpty('body');
-
-        return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->isUnique(['id']));
-
-        return $rules;
     }
 }
