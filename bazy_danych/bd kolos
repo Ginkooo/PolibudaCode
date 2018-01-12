@@ -1,0 +1,10 @@
+select lastname, firstname, id from students;
+select * from employees order by birth_date;
+select books.id from books join borrows on borrows.book=books.id where borrows.student in (3, 4) order by books.id;
+select students.lastname from students join borrows on borrows.student=students.id where borrows.borrowing_date between '01-10-2017' and '25-11-2017';
+select books.title, books.id from books where books.id not in (select books.id from books join borrows on books.id=borrows.book)
+select students.id, students.lastname, students.firstname, count(borrows.id) from students join borrows on students.id=borrows.student group by borrows.student;
+select students.id, count(borrows.student) from students join borrows on students.id=borrows.student group by borrows.student having count(borrows.student) > 4;
+select books.title, min(borrows.borrowing_date), max(borrows.borrowing_date) from borrows join books on books.id=borrows.book where books.id in (4, 5) GROUP BY borrows.book;
+insert into students (index_nr, firstname, lastname, birth_date, pesel, city, street, apartment, phone_nr) values (83730, 'Piotr', 'Czajka', '09-12-1995', 95120908170, 'Lublin', 'Kr�la Rogera 3', '64', 786818448);
+update employees set postal_code=null where city='Lublin';
