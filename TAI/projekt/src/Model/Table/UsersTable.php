@@ -71,7 +71,8 @@ class UsersTable extends Table
         $validator
             ->scalar('role')
             ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->notEmpty('role')
+            ->inList('role', ['user', 'admin']);
 
         return $validator;
     }
