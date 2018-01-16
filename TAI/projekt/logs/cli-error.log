@@ -21,3 +21,19 @@ Stack Trace:
 #18 {main}
 
 
+2018-01-16 19:16:48 Error: [Cake\Database\Exception] Cannot describe product_tag. It has 0 columns. in /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/Database/Schema/Collection.php on line 99
+Stack Trace:
+#0 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(63): Cake\Database\Schema\Collection->describe('product_tag', Array)
+#1 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/ORM/Table.php(532): Cake\Database\Schema\CachedCollection->describe('product_tag')
+#2 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/ORM/Table.php(653): Cake\ORM\Table->getSchema()
+#3 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(220): Cake\ORM\Table->getPrimaryKey()
+#4 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(130): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#5 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(113): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'product_tag', 'ProductTag')
+#6 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(100): Bake\Shell\Task\ModelTask->bake('ProductTag')
+#7 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/Console/Shell.php(507): Bake\Shell\Task\ModelTask->main('product_tag')
+#8 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/Console/Shell.php(500): Cake\Console\Shell->runCommand(Array, false, Array)
+#9 /home/ginkooo/polibudacode/TAI/projekt/vendor/cakephp/cakephp/src/Console/CommandRunner.php(141): Cake\Console\Shell->runCommand(Array, true)
+#10 /home/ginkooo/polibudacode/TAI/projekt/bin/cake.php(12): Cake\Console\CommandRunner->run(Array)
+#11 {main}
+
+
