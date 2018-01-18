@@ -1,0 +1,71 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 9283 (0x2443)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=PL, ST=Lubelskie, L=Lublin, O=ChayFOSS, OU=ChayFOSS, CN=ChayFOSS/emailAddress=czajka@protonmail.com
+        Validity
+            Not Before: Jan 18 11:04:59 2018 GMT
+            Not After : Jan 18 11:04:59 2019 GMT
+        Subject: C=PL, ST=Lubelskie, O=ChayFOSS, OU=ChayFOSS, CN=PKILabServer.com/emailAddress=sample@email.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:e9:71:34:72:45:3b:a2:85:0f:6c:c3:9b:a3:5a:
+                    9f:75:a7:b5:d2:89:4c:80:0c:cc:87:93:51:93:f2:
+                    50:b7:8b:2d:8a:8f:7d:aa:ae:72:a2:fa:1a:7a:e8:
+                    00:2d:d6:89:60:9b:11:ab:d2:4a:11:ff:5c:b0:1d:
+                    4a:a1:1f:fe:39:a0:51:b2:24:14:f7:1d:ba:f2:8a:
+                    ad:04:92:db:90:d3:dc:b2:8e:e5:10:4c:21:25:46:
+                    71:dc:b5:48:0e:c4:ce:09:f0:8b:e7:69:21:6b:99:
+                    3a:ec:e6:34:43:f7:51:8c:a8:92:68:c6:f9:7c:0a:
+                    ee:09:aa:51:1d:11:62:55:87
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Comment: 
+                OpenSSL Generated Certificate
+            X509v3 Subject Key Identifier: 
+                07:10:D7:5E:51:25:38:A4:B5:2D:84:F4:E8:A5:3D:D4:7F:F6:13:51
+            X509v3 Authority Key Identifier: 
+                keyid:49:99:0B:07:0F:75:8A:AA:D2:76:04:E2:EC:EB:9E:82:3E:9D:12:87
+
+    Signature Algorithm: sha256WithRSAEncryption
+         7b:87:d3:0c:9f:76:3c:aa:df:f1:4a:a6:0c:71:b5:3e:b1:a3:
+         96:52:9c:64:ab:31:d5:2b:bc:7a:5a:6d:c9:bc:c8:8f:72:32:
+         ae:5d:3e:78:5f:30:7d:a7:73:56:cf:44:96:23:ae:c9:aa:8a:
+         e7:b2:a9:6c:fe:a1:3a:93:94:fd:0b:64:8d:f4:76:be:a6:21:
+         14:72:45:80:7e:9f:1d:48:5c:08:ef:e9:80:53:cb:fd:cc:25:
+         5b:08:1f:5d:76:2d:b6:eb:ba:45:ba:d7:d5:da:fd:74:2e:2a:
+         e9:a8:f8:b2:0e:a5:98:91:1b:73:99:7e:c6:2e:35:db:f9:4b:
+         4a:24:6a:0f:cb:01:b7:78:dc:66:60:18:5f:b1:bb:a2:e7:7a:
+         67:12:2d:89:2a:a8:28:02:6b:5d:a1:db:3c:1c:d7:0c:74:7d:
+         b1:c1:4a:32:7e:f0:18:fa:0c:58:d3:8b:93:12:11:95:fd:1a:
+         60:4e:c8:8f:06:66:66:e4:b3:09:ff:90:83:10:44:91:00:4f:
+         71:a9:ca:91:97:00:f0:e6:28:17:c9:d6:72:ff:8e:5d:52:7b:
+         f0:27:13:cf:ad:97:ea:9c:34:1b:9d:36:db:a9:6b:8a:a2:48:
+         f6:4f:e5:26:8d:eb:f1:9d:05:f3:c2:46:8a:23:b3:ef:33:59:
+         02:14:89:c0
+-----BEGIN CERTIFICATE-----
+MIIDiTCCAnGgAwIBAgICJEMwDQYJKoZIhvcNAQELBQAwgZExCzAJBgNVBAYTAlBM
+MRIwEAYDVQQIDAlMdWJlbHNraWUxDzANBgNVBAcMBkx1YmxpbjERMA8GA1UECgwI
+Q2hheUZPU1MxETAPBgNVBAsMCENoYXlGT1NTMREwDwYDVQQDDAhDaGF5Rk9TUzEk
+MCIGCSqGSIb3DQEJARYVY3phamthQHByb3Rvbm1haWwuY29tMB4XDTE4MDExODEx
+MDQ1OVoXDTE5MDExODExMDQ1OVowgYMxCzAJBgNVBAYTAlBMMRIwEAYDVQQIDAlM
+dWJlbHNraWUxETAPBgNVBAoMCENoYXlGT1NTMREwDwYDVQQLDAhDaGF5Rk9TUzEZ
+MBcGA1UEAwwQUEtJTGFiU2VydmVyLmNvbTEfMB0GCSqGSIb3DQEJARYQc2FtcGxl
+QGVtYWlsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA6XE0ckU7ooUP
+bMObo1qfdae10olMgAzMh5NRk/JQt4stio99qq5yovoaeugALdaJYJsRq9JKEf9c
+sB1KoR/+OaBRsiQU9x268oqtBJLbkNPcso7lEEwhJUZx3LVIDsTOCfCL52kha5k6
+7OY0Q/dRjKiSaMb5fAruCapRHRFiVYcCAwEAAaN7MHkwCQYDVR0TBAIwADAsBglg
+hkgBhvhCAQ0EHxYdT3BlblNTTCBHZW5lcmF0ZWQgQ2VydGlmaWNhdGUwHQYDVR0O
+BBYEFAcQ115RJTiktS2E9OilPdR/9hNRMB8GA1UdIwQYMBaAFEmZCwcPdYqq0nYE
+4uzrnoI+nRKHMA0GCSqGSIb3DQEBCwUAA4IBAQB7h9MMn3Y8qt/xSqYMcbU+saOW
+UpxkqzHVK7x6Wm3JvMiPcjKuXT54XzB9p3NWz0SWI67Jqornsqls/qE6k5T9C2SN
+9Ha+piEUckWAfp8dSFwI7+mAU8v9zCVbCB9ddi2267pFutfV2v10LirpqPiyDqWY
+kRtzmX7GLjXb+UtKJGoPywG3eNxmYBhfsbui53pnEi2JKqgoAmtdods8HNcMdH2x
+wUoyfvAY+gxY04uTEhGV/RpgTsiPBmZm5LMJ/5CDEESRAE9xqcqRlwDw5igXydZy
+/45dUnvwJxPPrZfqnDQbnTbbqWuKokj2T+UmjevxnQXzwkaKI7PvM1kCFInA
+-----END CERTIFICATE-----
