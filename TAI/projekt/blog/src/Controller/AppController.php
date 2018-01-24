@@ -43,6 +43,16 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Articles',
+                'action' => 'index',
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Articles',
+                'action' => 'index'
+            ]
+        ]);
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -50,5 +60,17 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+    }
+
+    public function beforeFilter(Event $event) {
+        $this->Auth->allow(['index', 'view', 'display']);
+    }
+
+
+    public function isAuthorized($user) {
+        if (isset($user['role']) && $user['role'] == 'admin') {
+            return true;
+        }
+        return false;
     }
 }

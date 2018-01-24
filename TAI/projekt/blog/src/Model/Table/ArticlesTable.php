@@ -52,12 +52,12 @@ class ArticlesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('title')
-            ->allowEmpty('title');
+            ->requirePresence('title')
+            ->notEmpty('title');
 
         $validator
-            ->scalar('body')
-            ->allowEmpty('body');
+            ->notEmpty('body')
+            ->requirePresence('body');
 
         return $validator;
     }
