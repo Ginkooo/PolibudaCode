@@ -1,9 +1,7 @@
-import os
 import subprocess
 import tempfile
 
 from collections import namedtuple
-from itertools import cycle
 from pathlib import Path
 from timeit import timeit
 
@@ -12,7 +10,7 @@ urand = '/dev/urandom'
 pwd = 'asdf'
 File = namedtuple('File', 'sz_bytes path size_rel unit')
 Key = namedtuple('Key', 'path size algo')
-Result = namedtuple('Result', 'algo fsize time time_per_mb')
+Result = namedtuple('Result', 'key_size algo fsize dectime enctime dectime_per_mb enctime_per_mb error')
 
 
 multipler = {
@@ -56,28 +54,35 @@ def make_keys(tmpdir, keys, sizes):
 
 
 def profile_algos(tmpdir, files, keys):
-    for key, file in zip(keys, cycle(files)):
-        assert os.path.isfile(key.path)
-        assert os.path.isfile(file.path)
-        encfile = f'{tmpdir}/encrypted'
-        decfile = f'{tmpdir}/decrypted'
-        enccmd = (f'openssl rsautl -passin pass:{pwd} '
-                  f'-in {file.path} -out {encfile} -inkey {key.path} -encrypt')
-        deccmd = (f'openssl rsautl -passin pass:{pwd} '
-                  f'-in {encfile} -out {decfile} -inkey {key.path} -decrypt')
-        enccmd = f'subprocess.check_output("{enccmd}")'
-        deccmd = f'subprocess.check_output("{deccmd}")'
-        print(enccmd)
-        print(deccmd)
-        enctime = timeit(stmt=enccmd, setup='import subprocess')
-        assert os.path.isfile(decfile)
-        dectime = timeit(stmt=deccmd, setup='import subprocess')
-        assert os.path.isfile(decfile)
+    ret = []
+    for key in keys:
+        for file in files:
+            encfile = f'{tmpdir}/encrypted'
+            decfile = f'{tmpdir}/decrypted'
+            enccmd = (f'openssl rsautl -passin pass:{pwd} '
+                      f'-in {file.path} -out {encfile} -inkey {key.path} -encrypt')
+            deccmd = (f'openssl rsautl -passin pass:{pwd} '
+                      f'-in {encfile} -out {decfile} -inkey {key.path} -decrypt')
+            enccmd = f'subprocess.check_output("{enccmd}", shell=True, stderr=subprocess.PIPE)'
+            deccmd = f'subprocess.check_output("{deccmd}", shell=True, stderr=subprocess.PIPE)'
+            error = False
+            try:
+                enctime = timeit(stmt=enccmd, setup='import subprocess', number=100)
+                dectime = timeit(stmt=deccmd, setup='import subprocess', number=100)
+            except:
+                error = True
 
-        print(enctime)
-        print(dectime)
-
-
+            result = Result(
+                    algo=key.algo,
+                    key_size=key.size,
+                    fsize=f'{file.size_rel}{file.unit}',
+                    enctime=enctime,
+                    dectime=dectime,
+                    enctime_per_mb=enctime/10**6,
+                    dectime_per_mb=dectime/10**6,
+                    error=error)
+            ret.append(result)
+    return ret
 
 
 with tempfile.TemporaryDirectory() as tmpdir:
@@ -86,3 +91,13 @@ with tempfile.TemporaryDirectory() as tmpdir:
     szs = '1024 2048 4096'.split()
     keyfiles = make_keys(tmpdir, algos, szs)
     profiles = profile_algos(tmpdir, files, keyfiles)
+    for profile in profiles:
+        if profile.error:
+            continue
+        nl = '\n'
+        print(f'Size: {profile.fsize}{nl}'
+              f'Key size: {profile.key_size}{nl}'
+              f'Algorithm: {profile.algo}{nl}'
+              f'Decryption time per MB: {profile.dectime_per_mb}{nl}'
+              f'Encryption time per MB: {profile.enctime_per_mb}')
+        print()
