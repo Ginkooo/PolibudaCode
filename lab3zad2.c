@@ -53,6 +53,8 @@ int main() {
     int value = GetAdcChanel(ADC_CHN_7);
     tmp = value / 100;
 
+    print_value(value, 40, 40);
+
     if (tmp == prev_step) {
       continue;
     }
@@ -73,6 +75,5 @@ int main() {
     buffer[10] = 0;
 
     LCDPutStr(buffer, 10, 10, LARGE, WHITE, BLACK);
-    print_value(value, 40, 40);
    }
 }
