@@ -9,17 +9,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
+            android:layout_marginTop="@dimen/margin"
             android:id="@+id/fnameTextview"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/that_height"
             android:text="@string/fname_text"
             android:textSize="@dimen/font_size"/>
         <EditText
+            android:layout_marginTop="@dimen/margin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/that_height"
             android:layout_toRightOf="@+id/fnameTextview"
             android:id="@+id/fnameInput"/>
         <TextView
+            android:layout_marginTop="@dimen/margin"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/that_height"
             android:id="@+id/lnameTextview"
@@ -27,12 +30,14 @@
             android:text="@string/lname_text"
             android:layout_below="@id/fnameTextview"/>
         <EditText
+            android:layout_marginTop="@dimen/margin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/that_height"
             android:layout_toRightOf="@+id/lnameTextview"
             android:layout_below="@+id/fnameTextview"
             android:id="@+id/lnameInput"/>
         <TextView
+            android:layout_marginTop="@dimen/margin"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/that_height"
             android:id="@+id/gradeCountText"
@@ -40,6 +45,7 @@
             android:text="@string/grade_count_text"
             android:layout_below="@+id/lnameTextview" />
         <EditText
+            android:layout_marginTop="@dimen/margin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/that_height"
             android:layout_below="@id/lnameTextview"
@@ -51,7 +57,8 @@
             android:layout_height="@dimen/that_height"
             android:layout_below="@id/gradeCountText"
             android:text="@string/initial_button_text"
-            android:id="@+id/gradeButton"/>
+            android:id="@+id/gradeButton"
+            android:visibility="invisible"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

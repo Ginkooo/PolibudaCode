@@ -1,6 +1,11 @@
 package com.example.ginkooo.lab2piotrczajka;
 
 public class GradeModel {
-    private String name;
-    private int grade;
+    public GradeModel(String name, int grade) {
+        this.name = name;
+        this.grade = grade;
+    }
+
+    public String name;
+    public int grade;
 }

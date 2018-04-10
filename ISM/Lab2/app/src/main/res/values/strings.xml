@@ -8,4 +8,10 @@
     <string name="fnameNotValid">First name is not valid</string>
     <string name="lnameNotValid">Last name is not valid</string>
     <string name="gradeCountNotValid">Grade count should be between 5 and 15</string>
+    <string name="confirm_grade_input_text">Done</string>
+    <string name="average">average</string>
+    <string name="on_result_button_text">Super :)</string>
+    <string name="on_bad_result_button_text">You failer, you get nothing</string>
+    <string name="on_bad_result_end_toast">Sending a credit application...</string>
+    <string name="on_positive_result_end_toast">Congratulations! You passed.</string>
 </resources>

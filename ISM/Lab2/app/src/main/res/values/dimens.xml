@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="that_height">100px</dimen>
+    <dimen name="that_height">150px</dimen>
     <dimen name="font_size">60px</dimen>
+    <dimen name="margin">20px</dimen>
 </resources>
