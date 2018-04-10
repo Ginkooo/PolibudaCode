@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab2PiotrCzajka</string>
+    <string name="fname_text">First name:</string>
+    <string name="lname_text">Last name:</string>
+    <string name="grade_count_text">Grade count:</string>
+    <string name="initial_button_text">Grades</string>
+    <string name="digits">1234567890</string>
+    <string name="fnameNotValid">First name is not valid</string>
+    <string name="lnameNotValid">Last name is not valid</string>
+    <string name="gradeCountNotValid">Grade count should be between 5 and 15</string>
+</resources>

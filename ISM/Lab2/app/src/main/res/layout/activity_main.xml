@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/fnameTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/that_height"
+            android:text="@string/fname_text"
+            android:textSize="@dimen/font_size"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/that_height"
+            android:layout_toRightOf="@+id/fnameTextview"
+            android:id="@+id/fnameInput"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/that_height"
+            android:id="@+id/lnameTextview"
+            android:textSize="@dimen/font_size"
+            android:text="@string/lname_text"
+            android:layout_below="@id/fnameTextview"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/that_height"
+            android:layout_toRightOf="@+id/lnameTextview"
+            android:layout_below="@+id/fnameTextview"
+            android:id="@+id/lnameInput"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/that_height"
+            android:id="@+id/gradeCountText"
+            android:textSize="@dimen/font_size"
+            android:text="@string/grade_count_text"
+            android:layout_below="@+id/lnameTextview" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/that_height"
+            android:layout_below="@id/lnameTextview"
+            android:layout_toRightOf="@id/gradeCountText"
+            android:id="@+id/gradeCountInput"
+            android:digits="@string/digits"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/that_height"
+            android:layout_below="@id/gradeCountText"
+            android:text="@string/initial_button_text"
+            android:id="@+id/gradeButton"/>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
