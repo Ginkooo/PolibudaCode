@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[letterpaper, margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{polski}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\graphicspath{{.}}
+\usepackage {tocloft}
+\usepackage{hyperref}
+
+\hypersetup{%
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\lstset{style=mystyle}
+
+\begin{document}
+    \begin{center}
+        \includegraphics[width=5cm, height=5cm,]{herbPL}
+        \hspace{2cm}
+        \includegraphics[width=5cm, height=5cm]{herbWEII}
+    \end{center}
+    \centering
+    {\Huge \textbf{SPRAWOZDANIE}}
+    \vspace{0.5cm}
+    \newline
+    {\large LABORATIRIA SYSTEMÓW WBUDOWANYCH}
+    \vfill
+    \raggedright%
+    \textbf{IMIĘ I NAZWISKO:} Piotr Czajka
+
+    \newpage
+    \textbf{NUMER ĆWICZENIA:} 3
+    \newline
+    \textbf{Grupa laboratoryjna:} GL02
+    \newline
+    \textbf{Data wykonywania ćwiczenia:} 05.04.2018
+    \newline
+
+    \newpage
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Zadanie 1 -- kod}% chktex 8
+    \lstinputlisting{ex1.c}
+    \newpage
+
+    \section{Zadanie 1 - opis}% chktex 8
+    Należało odczytać wartość temperatury z układu znajdującego się na płytce, by później ją odpowiednio przeskalować na stopnie celsjusza.
+    \newpage
+
+    \section{Zadanie 2 - kod}% chktex 8
+    \lstinputlisting{ex2.c}
+    \newpage
+
+    \section{Zadanie 2 - opis}% chktex 8
+    Od zadania 1 rozni sie tylko tym, ze temperaturę należało przekonwertować na stopnie Fahrenheita i Kelvina, by je następnie wyświetlić.
+    \newpage
+
+    \section{Zadanie 3 - kod}
+    \lstinputlisting{ex3.c}
+    \newpage
+
+    \section{Zadanie 3 - opis}
+    Należało pokazać zmianę temperatury, stosując jakiś efekt graficzny, oprócz wypisywania temperatury na ekran. Ja zastosowałem zmiany koloru czcionki w zależności od temperatury.
+    \newpage
+
+    \section{Wnioski}
+    Układ nie jest w stanie sam podać prawidłowej temperatury w znanej nam jednostce. Trzeba programowo odczyt z układu przekonwertować na sensowne jednostki.
+
+\end{document}
