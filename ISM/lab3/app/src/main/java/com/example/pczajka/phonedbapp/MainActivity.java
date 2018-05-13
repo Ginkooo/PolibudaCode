@@ -29,19 +29,23 @@ public class MainActivity extends AppCompatActivity {
     enum RequestCode {ADD, EDIT}
 
     private void recreateTable() {
-        this.dbHandler.execSQL("drop table phone_table");
-        this.dbHandler.execSQL(String.format("CREATE TABLE %s (" +
-                "%s integer primary key," +
-                "%s text not null," +
-                "%s text not null," +
-                "%s text not null," +
-                "%s text);",
-                MySQLite.TABLE_NAME,
-                MySQLite.COLUMN_ID,
-                MySQLite.COLUMN_PRODUCENT,
-                MySQLite.COLUMN_MODEL,
-                MySQLite.COLUMN_ANDROID_VERSION,
-                MySQLite.COLUMN_WWW));
+        //this.dbHandler.execSQL("drop table phone_table");
+        try {
+            this.dbHandler.execSQL(String.format("CREATE TABLE %s (" +
+                            "%s integer primary key," +
+                            "%s text not null," +
+                            "%s text not null," +
+                            "%s text not null," +
+                            "%s text);",
+                    MySQLite.TABLE_NAME,
+                    MySQLite.COLUMN_ID,
+                    MySQLite.COLUMN_PRODUCENT,
+                    MySQLite.COLUMN_MODEL,
+                    MySQLite.COLUMN_ANDROID_VERSION,
+                    MySQLite.COLUMN_WWW));
+        } catch(Exception e) {
+
+        }
 
         this.dbHandler.execSQL("insert into phone_table (producent, model, android_version) values('asdf','sdfsdf','34')");
         this.dbHandler.execSQL("insert into phone_table (producent, model, android_version) values('sgg','asfgr','54')");
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         MySQLite mySQLite = new MySQLite(this);
         this.dbHandler = mySQLite.getWritableDatabase();
-        //recreateTable();
+        recreateTable();
         Cursor cursor = this.dbHandler.query(true, MySQLite.TABLE_NAME,
                                              new String[]{MySQLite.COLUMN_ID,
                                                      MySQLite.COLUMN_PRODUCENT,
@@ -234,7 +238,5 @@ public class MainActivity extends AppCompatActivity {
                     MySQLite.COLUMN_ID,
                     String.valueOf(id)));
         }
-
-        this.onCreate(nullgn);
     }
 }
