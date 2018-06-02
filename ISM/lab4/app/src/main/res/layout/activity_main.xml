@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="100px"
+        android:text="Adres:"
+        android:id="@+id/addressTextView"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        android:layout_toRightOf="@id/addressTextView"
+        android:id="@+id/addressEditText"/>
+
+    <Button
+        android:id="@+id/fetchInfoButton"
+        android:text="Pobierz informacje"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_below="@+id/addressEditText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50px"
+        android:text="Rozmiar pliku"
+        android:layout_below="@id/fetchInfoButton"
+        android:id="@+id/fileSizeLabel"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:layout_toRightOf="@id/fileSizeLabel"
+        android:layout_below="@id/fetchInfoButton"
+        android:textAlignment="center"
+        android:id="@+id/fileSizeTextView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50px"
+        android:text="Typ pliku"
+        android:id="@+id/fileTypeLabel"
+        android:layout_below="@id/fileSizeLabel"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:textAlignment="center"
+        android:layout_toRightOf="@id/fileTypeLabel"
+        android:layout_below="@id/fileSizeLabel"
+        android:id="@+id/fileTypeTextView"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:text="Pobierz plik"
+        android:layout_below="@id/fileTypeLabel"
+        android:id="@+id/fetchFileButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50px"
+        android:text="Pobrano bajtów"
+        android:layout_below="@id/fetchFileButton"
+        android:id="@+id/bytesFetchedLabel"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:id="@+id/bytesFetchedTextView"
+        android:layout_below="@id/fetchFileButton"
+        android:layout_toRightOf="@id/bytesFetchedLabel"/>
+
+</RelativeLayout>
