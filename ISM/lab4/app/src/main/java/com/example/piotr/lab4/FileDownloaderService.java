@@ -1,5 +1,6 @@
 package com.example.piotr.lab4;
 
+import android.Manifest;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
@@ -8,15 +9,18 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class FileDownloaderService extends IntentService {
 
@@ -24,6 +28,9 @@ public class FileDownloaderService extends IntentService {
     private static final String PARAM1 = "com.example.piotr.lab4.extra.param1";
     private static Context mContext = null;
     private static int bytesFetched = 0;
+
+    public final static String NOTIFICATION = "com.example.piotr.lab4.reciever";
+    public final static String FILEINFO = "FILEINFO";
 
     public FileDownloaderService() {
         super(FileDownloaderService.class.getName());
@@ -53,49 +60,59 @@ public class FileDownloaderService extends IntentService {
 
     private void downloadAndSaveFile(String url_) {
 
-        int BLOCK_SIZE = 2048;
+        int BLOCK_SIZE = 2048;;
 
-        HttpURLConnection connection = null;
+        int count;
         try {
             URL url = new URL(url_);
-            connection = (HttpURLConnection) url.openConnection();
-            File tempFile = new File(url.getFile());
-            String fName = tempFile.getName();
-            if ("".equals(fName)) {
-                fName = "defaultname";
+            URLConnection connection = url.openConnection();
+            connection.connect();
+
+            long fileSize = connection.getContentLength();
+
+            String name = url.getFile();
+            String [] arr = name.split("/");
+            name = arr[arr.length - 1];
+
+            if ("".equals(name))
+                name = "downloaded.raw";
+
+            InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
+
+            OutputStream outputStream = new FileOutputStream(Environment.getExternalStorageDirectory().toString() + File.separator + name);
+
+            byte data[] = new byte[1024];
+
+            long total = 0;
+
+            notifyFileDownloadProgress(0, fileSize, "starting");
+
+            while ((count = inputStream.read(data)) != -1) {
+                total += count;
+
+                notifyFileDownloadProgress(total, fileSize, "in progress");
+
+                outputStream.write(data, 0, count);
             }
-            File outFile = new File(
-                    Environment.getExternalStorageDirectory() + File.separator + fName
-            );
 
-            outFile.exists();
+            outputStream.flush();
 
-            InputStream netInputStream = null;
-            FileOutputStream fileOutputStream = null;
+            notifyFileDownloadProgress(0, 0, "done");
 
-            DataInputStream reader = new DataInputStream(connection.getInputStream());
-            fileOutputStream = openFileOutput(fName, MODE_PRIVATE);
-
-            byte buffer[] = new byte[BLOCK_SIZE];
-
-            int fetched = reader.read(buffer, 0, BLOCK_SIZE);
-            while(fetched != -1) {
-                fileOutputStream.write(buffer, 0, fetched);
-                bytesFetched += fetched;
-                Log.i("filefetcher","Pobrano " + Integer.toString(bytesFetched) + "bajtów");
-                fetched = reader.read(buffer, 0, BLOCK_SIZE);
-            }
-            fileOutputStream.flush();
-        } catch (FileNotFoundException e) {
+            outputStream.close();
+            inputStream.close();
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (connection != null) connection.disconnect();
+            notifyFileDownloadProgress(0, 0, "error");
         }
+    }
 
-        Toast.makeText(mContext, "Pobrano i zapisano plik!", Toast.LENGTH_LONG).show();
+    private void notifyFileDownloadProgress(long current, long size, String result) {
+
+        ProgressInfo info = new ProgressInfo(current, size, result);
+
+        Intent intent = new Intent(NOTIFICATION);
+        intent.putExtra(FILEINFO, info);
+        sendBroadcast(intent);
     }
 }
