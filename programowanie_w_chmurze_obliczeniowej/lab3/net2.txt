@@ -1,0 +1,58 @@
+[
+    {
+        "Name": "bridge1",
+        "Id": "879ac8eafe76f732024be35949cb30d1d2495eb984716aa9f4764964f8683dcb",
+        "Created": "2018-11-04T13:06:18.367167366+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "10.0.10.0/24"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "1b92a8a5ef4c57e765b1be21b3ad9eb61a5ee958b7dccc344b0db1643ff680a2": {
+                "Name": "D1",
+                "EndpointID": "05bac4148c4d5699049d7f76a44931fd12f9d20b0ab1cb96f97828da60460986",
+                "MacAddress": "02:42:0a:00:0a:03",
+                "IPv4Address": "10.0.10.3/24",
+                "IPv6Address": ""
+            },
+            "2722f61dcfa1dbf6acdb53b009e9d31afff617b78993a9b842a3b9b01775dd94": {
+                "Name": "D2",
+                "EndpointID": "1cdf370cc1997a892c1b0c2b15cb206b3861e19b7e6930417684cfd4148cc5b8",
+                "MacAddress": "02:42:0a:00:0a:04",
+                "IPv4Address": "10.0.10.4/24",
+                "IPv6Address": ""
+            },
+            "78c6a45bdeb8df2e39d32f558dae2146f606be41d530c6f9c4c4505107dd27c0": {
+                "Name": "T2",
+                "EndpointID": "0215bcf68c3538e88a1a19085d76d96cbd731baacfd3a408d3984dded28f1d7c",
+                "MacAddress": "02:42:0a:00:0a:02",
+                "IPv4Address": "10.0.10.2/24",
+                "IPv6Address": ""
+            },
+            "8588ab9134cc76c6c08e866005da526b1f0fe7f8fb00828dc69fb0d2af0bfc3e": {
+                "Name": "late",
+                "EndpointID": "d412021cd143d5a46aac5cf5e1c8b6100912bb62eb143a32174dd8a29a6b4649",
+                "MacAddress": "02:42:0a:00:0a:05",
+                "IPv4Address": "10.0.10.5/24",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]

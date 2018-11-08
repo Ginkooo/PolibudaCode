@@ -1,0 +1,52 @@
+[
+    {
+        "Name": "bridge2",
+        "Id": "d529ca748528d5b027e7bdec8991dd707804e24453837e248b9c9de2779df3b5",
+        "Created": "2018-11-04T13:06:20.466015092+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.21.0.0/16",
+                    "Gateway": "172.21.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "2722f61dcfa1dbf6acdb53b009e9d31afff617b78993a9b842a3b9b01775dd94": {
+                "Name": "D2",
+                "EndpointID": "3a63c4b1156930b0a8192a50b222a1c2343018b3906d14b7f8ebc0d42d63130b",
+                "MacAddress": "02:42:ac:15:00:03",
+                "IPv4Address": "172.21.0.3/16",
+                "IPv6Address": ""
+            },
+            "4b7872d1506020683a065037eb0bdb0a8eec3171726dcb55df85ab4010f883cf": {
+                "Name": "S1",
+                "EndpointID": "34ebe3f0cd9706fcd60ac45eae78acf5f624aa61f2b4e9887630992e55b6c865",
+                "MacAddress": "02:42:ac:15:00:02",
+                "IPv4Address": "172.21.0.2/16",
+                "IPv6Address": ""
+            },
+            "8588ab9134cc76c6c08e866005da526b1f0fe7f8fb00828dc69fb0d2af0bfc3e": {
+                "Name": "late",
+                "EndpointID": "579b95924fe8eacd8e39ce3fb31a886caceda41a447078a8e80f90c7750e8fa4",
+                "MacAddress": "02:42:ac:15:00:04",
+                "IPv4Address": "172.21.0.4/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {}
+    }
+]
